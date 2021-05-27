@@ -13,13 +13,31 @@ struct ListaView: View {
                      Materias(periodo: 1, nome: "Psicologia 1", departamento: "dadin", horasSemanais: 45),
                      Materias(periodo: 2, nome: "Psicologia 2", departamento: "dadin", horasSemanais: 45),
     ]
-    let periodos = Array(1...8)
+    var periodos : [Int]{
+        Array(Set(materias.map{$0.periodo})).sorted()
+    }
+    
     var body: some View {
         VStack {
             List{
                 ForEach (periodos, id: \.self) { periodo in
+
                     Section(header:
-                                Text("\(periodo) periodo")){
+                                HStack{
+                                    Text("\(Text("\(periodo)").foregroundColor(Color("cinzaClaro"))) período")
+                                        .padding()
+                                        .frame(height: 30)
+                                        .font(.system(size:15, weight: .black, design: .default))
+                                        Spacer()
+                                
+                                }.background(Color.accentColor)
+                                .listRowInsets(EdgeInsets(
+                                                            top: 0,
+                                                            leading: 0,
+                                                            bottom: 0,
+                                                            trailing: 0))
+                    )
+                    {
                         
                         ForEach (materias.filter{$0.periodo == periodo}, id: \.id) { materias in
                             HStack {
