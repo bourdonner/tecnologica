@@ -7,101 +7,61 @@
 
 import SwiftUI
 
-struct materiasDesc: Identifiable {
-    let id = UUID()
-    let nome: String
-    let horasSemanais: String
-    let capa : String
-
-}
-
 struct ListaView: View {
-    let materias = [
-        materiasDesc(nome: "Comunicação Oral e Escrita",
-                     horasSemanais: "30 horas",
-                     capa: "dacex"),
-        materiasDesc(nome: "História da Arte 1",
-                     horasSemanais: "45 horas",
-                     capa: "dadin"),
-        materiasDesc(nome: "Psicologia 1",
-                     horasSemanais: "30 horas",
-                     capa: "dadin"),
-        materiasDesc(nome: "Teoria da Cor",
-                     horasSemanais: "45 horas",
-                     capa: "dadin"),
-        materiasDesc(nome: "Materiais e Processos de Fabricação",
-                     horasSemanais: "60 horas",
-                     capa: "dadin"),
-        materiasDesc(nome: "Metodologia da Pesquisa",
-                     horasSemanais: "30 horas",
-                     capa: "dadin"),
-        materiasDesc(nome: "Desenho 1",
-                     horasSemanais: "45 horas",
-                     capa: "dadin"),
+    let materias = [ Materias(periodo: 1, nome: "Comunicação Oral e Escrita", departamento: "dacex", horasSemanais: 30),
+                     Materias(periodo: 1, nome: "História da Arte 1", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Psicologia 1", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 2, nome: "Psicologia 2", departamento: "dadin", horasSemanais: 45),
     ]
-    
+    let periodos = Array(1...8)
     var body: some View {
-            VStack {
-                
-                ScrollView {
-                    
-                    Text("\(Text("primeiro").foregroundColor(Color("amarelo"))) período")
-                        .font(.system(size:43, weight: .black, design: .default))
-                        .fontWeight(.black)
-                        .foregroundColor(Color("cinza"))
-                        .multilineTextAlignment(.leading)
-                        .frame(width: 360)
-                        .padding(.top, 10.0)
-                        .padding()
-                
-                    
-                    ForEach (materias) { materias in
-                        HStack {
-                            VStack {
-                                Image("recDepartamento")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 50)
-
-                                
-                                Text(materias.capa)
-                                    .fontWeight(.black)
-                                    .frame(width: 60)
-                                    .padding(.vertical, -4)
-                                    .padding(.horizontal, 20)
-                                
+        VStack {
+            List{
+                ForEach (periodos, id: \.self) { periodo in
+                    Section(header:
+                                Text("\(periodo) periodo")){
+                        
+                        ForEach (materias.filter{$0.periodo == periodo}, id: \.id) { materias in
+                            HStack {
+                                VStack {
+                                    Image("recDepartamento")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50)
+                                    
+                                    Text(materias.departamento)
+                                        .fontWeight(.black)
+                                        .frame(width: 60)
+                                        .padding(.vertical, -4)
+                                        .padding(.horizontal, 20)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(materias.nome)
+                                        .fontWeight(.bold)
+                                        .multilineTextAlignment(.leading)
+                                    
+                                    Text("\(String(materias.horasSemanais)) horas semanais")
+                                        .multilineTextAlignment(.leading)
+                                }
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 0)
+                                Spacer()
                             }
                             
-                            
-                            VStack(alignment: .leading) {
-                                Text(materias.nome)
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(.leading)
-
-                                Text(materias.horasSemanais)
-                                    .multilineTextAlignment(.leading)
-                                
-                            }
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 0)
-
-                            Spacer()
                         }
-                        Divider()
+                        
                     }
                     
                 }
                 
             }
-        
-       // .navigationBarTitle("grade").ignoresSafeArea()
-
- //       .padding(0)
-        
+            
+        }.listStyle(InsetListStyle())
         .navigationBarTitle("Grade", displayMode: .inline)
         
     }
 }
+
 
 struct AulaView_Previews: PreviewProvider {
     static var previews: some View {
@@ -110,3 +70,4 @@ struct AulaView_Previews: PreviewProvider {
         }
     }
 }
+
