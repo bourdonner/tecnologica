@@ -24,6 +24,7 @@ struct LoginView: View {
                     .scaledToFit()
                     .frame(minHeight: 30, idealHeight: 60, maxHeight: 60, alignment: .center)
                     .padding(.bottom, 0)
+                    .padding(.top, 40)
                 
                 VStack{
                     
@@ -51,6 +52,7 @@ struct LoginView: View {
                         
                         Divider()
                         Toggle("Ver sua senha", isOn: $isToggleOn)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                     }
                     .frame(width: 320, height: 120, alignment: .leading)
                     Spacer()

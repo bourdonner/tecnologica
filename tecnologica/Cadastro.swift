@@ -20,12 +20,13 @@ struct CadastroView: View {
     var body: some View {
   
             VStack {
-                
+              
                 Image("utfIcon")
                     .resizable()
                     .scaledToFit()
                     .frame(minHeight: 30, idealHeight: 60, maxHeight: 60, alignment: .center)
                     .padding(.bottom, 0)
+                    .padding(.top, 40)
 
                 
                 VStack{
@@ -57,6 +58,7 @@ struct CadastroView: View {
                         
                         Divider()
                         Toggle("Ver sua senha", isOn: $isToggleOn)
+                            .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                     }
                     .frame(width: 320, height: 120, alignment: .leading)
                     Spacer()
@@ -81,7 +83,6 @@ struct CadastroView: View {
                     NavigationLink (
                         destination: LoginView(),
                         label: {
-                            
                             Text("Já tem conta? \(Text("Faça o login aqui.").foregroundColor(.accentColor))")
                                 .font(.system(size:18, weight: .black, design: .default))
                                 .fontWeight(.light)
