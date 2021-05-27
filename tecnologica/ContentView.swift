@@ -25,11 +25,12 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 80)
+                        .padding(.top, 40)
                         .padding()
                     
                     Spacer()
                     
-                    Text("olá, \(Text("estudante").foregroundColor(Color("amarelo")))!\n você está na universidade tecnológica")
+                    Text("olá, \(Text("estudante").foregroundColor(.accentColor))!\n você está na universidade tecnológica")
                         .font(.system(size:43, weight: .black, design: .default))
                         .fontWeight(.black)
                         .foregroundColor(Color("cinza"))
@@ -44,7 +45,7 @@ struct ContentView: View {
                         .padding()
                     
                     
-                    Text("olá, \(Text(name).foregroundColor(Color("amarelo"))).\n você está na universidade tecnológica")
+                    Text("olá, \(Text(name).foregroundColor(.accentColor)).\n você está na universidade tecnológica")
                         .font(.system(size:43, weight: .black, design: .default))
                         .fontWeight(.black)
                         .foregroundColor(Color("cinza"))
@@ -61,6 +62,7 @@ struct ContentView: View {
                     .fill(Color("amarelo"))
                     .frame(width: 250, height: 3)
                     .padding(.top, 0)
+                    .padding(.bottom, 40)
                     
                 Spacer()
                 

@@ -10,8 +10,29 @@ import SwiftUI
 struct ListaView: View {
     let materias = [ Materias(periodo: 1, nome: "Comunicação Oral e Escrita", departamento: "dacex", horasSemanais: 30),
                      Materias(periodo: 1, nome: "História da Arte 1", departamento: "dadin", horasSemanais: 45),
-                     Materias(periodo: 1, nome: "Psicologia 1", departamento: "dadin", horasSemanais: 45),
-                     Materias(periodo: 2, nome: "Psicologia 2", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Psicologia 1", departamento: "dadin", horasSemanais: 30),
+                     Materias(periodo: 1, nome: "Teoria da Cor", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Materiais e Processos de Fabricação", departamento: "dadin", horasSemanais: 60),
+                     Materias(periodo: 1, nome: "Metodologia da Pesquisa", departamento: "dadin", horasSemanais: 30),
+                     Materias(periodo: 1, nome: "Desenho 1", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Geometria Descritiva 1", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Composição 1", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 1, nome: "Representação 1", departamento: "dadin", horasSemanais: 45),
+                     //Segundo período
+                     Materias(periodo: 2, nome: "Atividades Complementares", departamento: "dadin", horasSemanais: 180),
+                     Materias(periodo: 2, nome: "História da Arte 2", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 2, nome: "Ilustração 1", departamento: "dadin", horasSemanais: 60),
+                     Materias(periodo: 2, nome: "Materiais e Processos de Fabricação 2", departamento: "dadin", horasSemanais: 30),
+                     Materias(periodo: 2, nome: "Processo e Produção Gráfica 1", departamento: "dadin", horasSemanais: 60),
+                     Materias(periodo: 2, nome: "Computação Gráfica 1", departamento: "dadin", horasSemanais: 60),
+                     Materias(periodo: 2, nome: "Geometria Descritiva 2", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 2, nome: "Composição 2", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 2, nome: "Representação 2", departamento: "dadin", horasSemanais: 45),
+                     Materias(periodo: 2, nome: "Tecnologia e Sociedade", departamento: "daeso", horasSemanais: 45),
+                     
+
+                     
+                     
     ]
     var periodos : [Int]{
         Array(Set(materias.map{$0.periodo})).sorted()
@@ -24,15 +45,16 @@ struct ListaView: View {
 
                     Section(header:
                                 HStack{
-                                    Text("\(Text("\(periodo)").foregroundColor(Color("cinzaClaro"))) período")
-                                        .padding()
-                                        .frame(height: 30)
-                                        .font(.system(size:15, weight: .black, design: .default))
+                                    Text("\(Text("\(periodo)º ").foregroundColor(.accentColor)) \(Text("período").foregroundColor(Color("cinza")))")
+                                        .textCase(nil)
+                                        .padding(20)
+                                        //.frame(height: 30)
+                                        .font(.system(size:25, weight: .black, design: .default))
                                         Spacer()
                                 
-                                }.background(Color.accentColor)
+                                }//.background(Color("branco"))
                                 .listRowInsets(EdgeInsets(
-                                                            top: 0,
+                                                            top: 10,
                                                             leading: 0,
                                                             bottom: 0,
                                                             trailing: 0))
@@ -49,9 +71,9 @@ struct ListaView: View {
                                     
                                     Text(materias.departamento)
                                         .fontWeight(.black)
-                                        .frame(width: 60)
+                                        .frame(width: 55)
                                         .padding(.vertical, -4)
-                                        .padding(.horizontal, 20)
+                                        .padding(.horizontal, 5)
                                 }
                                 VStack(alignment: .leading) {
                                     Text(materias.nome)
@@ -61,8 +83,8 @@ struct ListaView: View {
                                     Text("\(String(materias.horasSemanais)) horas semanais")
                                         .multilineTextAlignment(.leading)
                                 }
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 0)
+                                .padding(.vertical, 5)
+                                .padding(.horizontal, 5)
                                 Spacer()
                             }
                             
@@ -74,8 +96,10 @@ struct ListaView: View {
                 
             }
             
-        }.listStyle(InsetListStyle())
-        .navigationBarTitle("Grade", displayMode: .inline)
+        }.listStyle(InsetGroupedListStyle())
+        // Para mais estilos de lista: https://developer.apple.com/documentation/swiftui/liststyle
+        
+        .navigationBarTitle("Matriz Curricular", displayMode: .inline)
         
     }
 }
