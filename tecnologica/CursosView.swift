@@ -10,21 +10,21 @@ import SwiftUI
 struct CursosView: View {
     @State var searchContent: String = ""
     
-    let cursos = [ Cursos(tag: "dadin", nome: "Bacharelado em Design", departamento: "pencil.and.outline"),
-                   Cursos(tag: "dadin", nome: "Tecnologia em Design Gráfico", departamento: "pencil.and.outline"),
-                   Cursos(tag: "dacex", nome: "Administração", departamento: "doc.text"),
-                   Cursos(tag: "dainf", nome: "Bacharel em Sistemas de Informação", departamento: "info.circle"),
+    let cursos = [ Cursos(symbol: "dadin", nome: "Bacharelado em Design", departamento: "pencil.and.outline", tag: 1),
+                   Cursos(symbol: "dadin", nome: "Tecnologia em Design Gráfico", departamento: "pencil.and.outline", tag: 1),
+                   Cursos(symbol: "dacex", nome: "Administração", departamento: "doc.text", tag: 1),
+                   Cursos(symbol: "dainf", nome: "Bacharel em Sistemas de Informação", departamento: "info.circle", tag: 1),
                    
     ]
     var cursosFiltradas: [Cursos] {
         cursos.filter {
             searchContent.isEmpty ? true : $0.nome.lowercased().contains(searchContent.lowercased())
-                || $0.tag.lowercased().contains(searchContent.lowercased())
+                || $0.symbol.lowercased().contains(searchContent.lowercased())
                 || $0.departamento.lowercased().contains(searchContent.lowercased())
         }
     }
-    var tags : [String]{
-        Array(Set(cursosFiltradas.map{$0.tag})).sorted()
+    var symbols : [String]{
+        Array(Set(cursosFiltradas.map{$0.symbol})).sorted()
     }
     
     var body: some View {
@@ -37,11 +37,11 @@ struct CursosView: View {
             
             List{
                 
-                ForEach (tags, id: \.self) { tag in
+                ForEach (symbols, id: \.self) { symbol in
                     
                     Section(header:
                                 HStack{
-                                    Text("\(Text("\(tag) ").foregroundColor(.accentColor))")
+                                    Text("\(Text("\(symbol) ").foregroundColor(.accentColor))")
                                         .textCase(nil)
                                         .padding(20)
                                         //.frame(height: 30)
@@ -57,7 +57,7 @@ struct CursosView: View {
                     )
                     {
                         
-                        ForEach (cursosFiltradas.filter{$0.tag == tag}, id: \.id) { cursosFiltradas in
+                        ForEach (cursosFiltradas.filter{$0.symbol == symbol}, id: \.id) { cursosFiltradas in
                             HStack {
                                 VStack {
                                     

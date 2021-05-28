@@ -10,14 +10,16 @@ import Foundation
 import Foundation
 
 class Cursos {
-    init(tag: String, nome: String, departamento: String) {
+    init(symbol: String, nome: String, departamento: String, tag: Int) {
         self.tag = tag
+        self.symbol = symbol
         self.nome = nome
         self.departamento = departamento
     }
     let id = UUID()
-    let tag: String
+    let symbol: String
     let nome: String
     let departamento: String
+    let tag: Int
     
 }
