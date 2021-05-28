@@ -14,6 +14,9 @@
 		1803130C265DE2E800B522EB /* Cadastro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803130B265DE2E800B522EB /* Cadastro.swift */; };
 		18031310265EB07700B522EB /* GradeCursoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803130F265EB07700B522EB /* GradeCursoView.swift */; };
 		1887F9DA265FCCDC00D5E3A3 /* modeloMateria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887F9D9265FCCDC00D5E3A3 /* modeloMateria.swift */; };
+		1888886A266117FF00B5CFFD /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18888869266117FF00B5CFFD /* SearchBar.swift */; };
+		1888886C266187F700B5CFFD /* CursosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888886B266187F700B5CFFD /* CursosView.swift */; };
+		1888886E2661899900B5CFFD /* modeloCurso.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888886D2661899900B5CFFD /* modeloCurso.swift */; };
 		188F3ED8265F1BA400AED60C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F3ED7265F1BA400AED60C /* Login.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		1803130B265DE2E800B522EB /* Cadastro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cadastro.swift; sourceTree = "<group>"; };
 		1803130F265EB07700B522EB /* GradeCursoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCursoView.swift; sourceTree = "<group>"; };
 		1887F9D9265FCCDC00D5E3A3 /* modeloMateria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modeloMateria.swift; sourceTree = "<group>"; };
+		18888869266117FF00B5CFFD /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		1888886B266187F700B5CFFD /* CursosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursosView.swift; sourceTree = "<group>"; };
+		1888886D2661899900B5CFFD /* modeloCurso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modeloCurso.swift; sourceTree = "<group>"; };
 		188F3ED7265F1BA400AED60C /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,6 +50,7 @@
 		180312F0265DD81E00B522EB = {
 			isa = PBXGroup;
 			children = (
+				18888869266117FF00B5CFFD /* SearchBar.swift */,
 				180312FB265DD81E00B522EB /* tecnologica */,
 				180312FA265DD81E00B522EB /* Products */,
 			);
@@ -65,6 +72,8 @@
 				1803130B265DE2E800B522EB /* Cadastro.swift */,
 				188F3ED7265F1BA400AED60C /* Login.swift */,
 				1803130F265EB07700B522EB /* GradeCursoView.swift */,
+				1888886D2661899900B5CFFD /* modeloCurso.swift */,
+				1888886B266187F700B5CFFD /* CursosView.swift */,
 				1887F9D9265FCCDC00D5E3A3 /* modeloMateria.swift */,
 				18031300265DD82100B522EB /* Assets.xcassets */,
 				18031305265DD82100B522EB /* Info.plist */,
@@ -150,10 +159,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1888886A266117FF00B5CFFD /* SearchBar.swift in Sources */,
 				1803130C265DE2E800B522EB /* Cadastro.swift in Sources */,
+				1888886E2661899900B5CFFD /* modeloCurso.swift in Sources */,
 				188F3ED8265F1BA400AED60C /* Login.swift in Sources */,
 				18031310265EB07700B522EB /* GradeCursoView.swift in Sources */,
 				180312FF265DD81E00B522EB /* ContentView.swift in Sources */,
+				1888886C266187F700B5CFFD /* CursosView.swift in Sources */,
 				180312FD265DD81E00B522EB /* tecnologicaApp.swift in Sources */,
 				1887F9DA265FCCDC00D5E3A3 /* modeloMateria.swift in Sources */,
 			);

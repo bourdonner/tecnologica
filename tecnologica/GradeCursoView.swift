@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ListaView: View {
+    @State var searchContent: String = ""
+    
     let materias = [ Materias(periodo: 1, nome: "Comunicação Oral e Escrita", departamento: "dacex", horasSemanais: 30),
                      Materias(periodo: 1, nome: "História da Arte 1", departamento: "dadin", horasSemanais: 45),
                      Materias(periodo: 1, nome: "Psicologia 1", departamento: "dadin", horasSemanais: 30),
@@ -34,13 +36,25 @@ struct ListaView: View {
                      
                      
     ]
+    var materiasFiltradas: [Materias] {
+        materias.filter {
+            searchContent.isEmpty ? true : $0.nome.lowercased().contains(searchContent.lowercased()) || $0.departamento.lowercased().contains(searchContent.lowercased())
+        }
+    }
     var periodos : [Int]{
-        Array(Set(materias.map{$0.periodo})).sorted()
+        Array(Set(materiasFiltradas.map{$0.periodo})).sorted()
     }
     
     var body: some View {
-        VStack {
+        VStack (spacing: 0){
+            
+            SearchBar(searchQuery: $searchContent, placeholder: "Pesquisar", placeholderColor: Color ("branco"))
+                
+                        
+                        .background(Color(.systemGray6))
+
             List{
+                
                 ForEach (periodos, id: \.self) { periodo in
 
                     Section(header:
@@ -61,7 +75,7 @@ struct ListaView: View {
                     )
                     {
                         
-                        ForEach (materias.filter{$0.periodo == periodo}, id: \.id) { materias in
+                        ForEach (materiasFiltradas.filter{$0.periodo == periodo}, id: \.id) { materiasFiltradas in
                             HStack {
                                 VStack {
                                     Image("recDepartamento")
@@ -69,18 +83,18 @@ struct ListaView: View {
                                         .scaledToFit()
                                         .frame(width: 50)
                                     
-                                    Text(materias.departamento)
+                                    Text(materiasFiltradas.departamento)
                                         .fontWeight(.black)
                                         .frame(width: 55)
                                         .padding(.vertical, -4)
                                         .padding(.horizontal, 5)
                                 }
                                 VStack(alignment: .leading) {
-                                    Text(materias.nome)
+                                    Text(materiasFiltradas.nome)
                                         .fontWeight(.bold)
                                         .multilineTextAlignment(.leading)
                                     
-                                    Text("\(String(materias.horasSemanais)) horas semanais")
+                                    Text("\(String(materiasFiltradas.horasSemanais)) horas semanais")
                                         .multilineTextAlignment(.leading)
                                 }
                                 .padding(.vertical, 5)
@@ -98,10 +112,11 @@ struct ListaView: View {
             
         }.listStyle(InsetGroupedListStyle())
         // Para mais estilos de lista: https://developer.apple.com/documentation/swiftui/liststyle
-        
         .navigationBarTitle("Matriz Curricular", displayMode: .inline)
         
+
     }
+
 }
 
 
